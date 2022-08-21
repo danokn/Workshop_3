@@ -27,13 +27,15 @@ public class MainDao {
 //        System.out.println(userDao.read(2));
 //        System.out.println(userDao.read(3));
 
+//        System.out.println(Arrays.toString(userDao.findAllUsers()));
+
 
 //-----------FUNKCJA UPDATE---------------------
-        User updateUser = userDao.read(1);
-        updateUser.setUserName("Janusz");
-        updateUser.setEmail("janusz@wp.pl");
-        updateUser.setPassword("nowehaslo");
-        userDao.update(updateUser);
+//        User updateUser = userDao.read(1);
+//        updateUser.setUserName("Janusz");
+//        updateUser.setEmail("janusz@wp.pl");
+//        updateUser.setPassword("nowehaslo");
+//        userDao.update(updateUser);
 
 //----------FUNKCJA DELETE---------------------
 //        userDao.delete(1);

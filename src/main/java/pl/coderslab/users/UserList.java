@@ -1,7 +1,9 @@
-package pl.coderslab.workshop_3;
+package pl.coderslab.users;
 
+import pl.coderslab.entity.User;
 import pl.coderslab.entity.UserDao;
 
+import javax.naming.Context;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -12,8 +14,9 @@ public class UserList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDao userDao = new UserDao();
-        request.setAttribute("users", userDao.findAllUsers());
+        request.getSession().setAttribute("users", userDao.findAllUsers());
 
+        getServletContext().getRequestDispatcher("/users/list.jsp").forward(request, response);
     }
 
     @Override

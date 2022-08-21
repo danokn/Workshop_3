@@ -41,7 +41,8 @@ public class UserDao {
     }
 
     public  User create(User user) {
-        try (Connection conn = DbUtil.connectWorkshop2()) {
+//        try (Connection conn = DbUtil.connectWorkshop2()) {
+        try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUserName());
@@ -61,7 +62,8 @@ public class UserDao {
     }
 
     public User read(int userId) {
-        try (Connection conn = DbUtil.connectWorkshop2()) {
+//        try (Connection conn = DbUtil.connectWorkshop2()) {
+        try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement prStmt = conn.prepareStatement(FIND_USER_BY_ID);
             prStmt.setInt(1, userId);
             ResultSet rs = prStmt.executeQuery();
@@ -82,7 +84,8 @@ public class UserDao {
     }
 
     public void update(User user) {
-        try(Connection conn = DbUtil.connectWorkshop2()) {
+//        try(Connection conn = DbUtil.connectWorkshop2()) {
+        try(Connection conn = DbUtil.getConnection()) {
 
             PreparedStatement prStmt = conn.prepareStatement(UPDATE_USER);
             prStmt.setString(1, user.getUserName());
@@ -98,7 +101,8 @@ public class UserDao {
 
     public void delete(int userId) {
 
-        try(Connection conn = DbUtil.connectWorkshop2()) {
+//        try(Connection conn = DbUtil.connectWorkshop2()) {
+        try(Connection conn = DbUtil.getConnection()) {
 
             PreparedStatement prStmt = conn.prepareStatement(DELETE_USER);
             prStmt.setInt(1, userId);
@@ -111,7 +115,8 @@ public class UserDao {
 
     public User[] findAllUsers() {
 
-        try(Connection conn = DbUtil.connectWorkshop2()) {
+//        try(Connection conn = DbUtil.connectWorkshop2()) {
+        try(Connection conn = DbUtil.getConnection()) {
 
             PreparedStatement prStmt = conn.prepareStatement(FIND_ALL_USERS);
             ResultSet rs = prStmt.executeQuery();
@@ -137,10 +142,6 @@ public class UserDao {
         tmpUsers[users.length] = u; // Dodajemy obiekt na ostatniej pozycji.
         return tmpUsers; // Zwracamy nową tablicę.
     }
-
-
-
-
 
 
 
